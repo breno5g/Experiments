@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: #3ebd9d;
+    background-color: #ebebeb;
 }
 
 header {
@@ -20,7 +20,7 @@ header {
 }
 
 .smaller {
-    max-width: 80%;
+    max-width: 75%;
     margin: 0 auto;
 }
 
@@ -46,29 +46,33 @@ nav h2 {
     color:  #2f8d76;
 }
 
-/* =-=-=-=-= Apresentação =-=-=-=-= */
+/* =-=-=-=-= Portfolio =-=-=-=-= */
 
-.content {
-    padding-top:22px;
+section {
     text-align: center;
 }
 
-.content img {
-    width: 25%;
-    margin-bottom: 15px;
+section h2 {
+    color: #2C3E50;
+    font-size: 48px;
+    text-transform: uppercase;
+    padding-top: 15px;
+    font-weight: 600;
 }
 
-.content h2 {
-    font-size: 60px;
+section p {
+    color: #2C3E50;
+    font-size: 48px;
     text-transform: uppercase;
 }
 
-.division {
-    font-size: 50px;
-    font-weight: bold;
-    margin: 12px 0;
+.content img{
+    width: 33%;
+    padding: 8px;
+    border-radius: 24px;
 }
 
-.hab {
-    font-size: 24px;
+.content img:hover {
+    cursor: pointer;
 }
+
