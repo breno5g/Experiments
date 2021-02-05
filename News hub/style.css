@@ -32,6 +32,7 @@
     padding: 15px;
     border-radius: 20px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .card .info {
@@ -56,10 +57,23 @@
 
 .tech {
     background-color: rgb(91, 189, 255);
+    transition: 0.3s;
+}
+
+.tech:hover {
+    background-color: rgb(56, 175, 255);
 }
 
 .code {
     background-color: rgb(103, 255, 116);
+    transition: 0.3s;
+}
+.code:hover {
+    background-color: rgb(59, 255, 75);
+}
+
+.card:hover {
+    background-color: rgb(72, 253, 193);
 }
 
 @media screen and (max-width: 900px) {
