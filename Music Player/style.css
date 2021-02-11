@@ -115,7 +115,7 @@ body {
 }
 
 .container .top .volume input[type = "range"] {
-    width: 75%;
+    width: 70%;
 }
 
 input[type = "range"],

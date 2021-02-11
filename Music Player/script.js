@@ -1,5 +1,6 @@
-let audio = document.getElementById("audio")
+let audio = document.getElementById("audio");
 let progressBar = document.querySelector(".currentTimeBar");
+let volumeBar = document.getElementById("volumeBar");
 let currentTime = 0;
 let actualVol;
 let playInterval;
@@ -54,6 +55,12 @@ function mute() {
         audio.volume = 0;
     }
     // console.log(actualVol)
+}
+
+/* =-=-=-=-= Mute bar =-=-=-=-= */
+function changeVol() {
+    audio.volume = volumeBar.value * 0.01;
+    // console.log(audio.volume);
 }
 
 /* =-=-=-=-= Time bar =-=-=-=-= */
