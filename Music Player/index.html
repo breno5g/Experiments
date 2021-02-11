@@ -11,19 +11,15 @@
         <div class="playing-now">
             <audio id="audio" src="assets/musics/Death of a bachelor.mp3"></audio>
             <div class="currentTime">
-                <div class="currentTimeBar"></div>
+                <input type="range" min="0" max="100" value="0" class="currentTimeBar" onchange="setTime()">
             </div>
         </div>
         <div class="controls-container">
             <div class="time-bar"></div>
             <div class="controls">
-                <img src="assets/icons/icons8-rewind-50.png">
-                <img src="assets/icons/icons8-skip-15-seconds-back-50.png" onclick="goBackward()">
-                <img src="assets/icons/icons8-minus-50.png" onclick="turnDown()">
-                <img src="assets/icons/icons8-circled-play-50.png" onclick="playPause()">
-                <img src="assets/icons/icons8-plus-50.png" onclick="turnUp()">
-                <img src="assets/icons/icons8-skip-ahead-15-seconds-50.png" onclick="goForward()">
-                <img src="assets/icons/icons8-fast-forward-50.png">
+                <img src="assets/icons/icons8-skip-to-start-100.png">
+                <img src="assets/icons/icons8-play-100.png" onclick="playPause()">
+                <img src="assets/icons/icons8-end-100.png">
             </div>
         </div>
     </div>

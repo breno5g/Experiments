@@ -5,11 +5,13 @@ function playPause() {
     if (audio.classList.contains("playing") == true) {
         audio.pause();
         audio.classList.remove("playing");
-        btn.setAttribute("src", "assets/icons/icons8-circled-play-50.png")
+        btn.setAttribute("src", "assets/icons/icons8-play-100.png")
+        playBar()
     } else {
         audio.play();
         audio.classList.add("playing");
-        btn.setAttribute("src", "assets/icons/icons8-pause-button-50.png")
+        btn.setAttribute("src", "assets/icons/icons8-pause-100.png")
+        playBar()
     }
 }
 
@@ -34,11 +36,27 @@ function turnDown() {
 
 let teste = document.querySelector(".currentTimeBar");
 
+let valor = 0;
 
-// setInterval(() => {
-//     teste.style = `width: ${parseInt(audio.duration) / 100}px`
-// }, 50)
+let n;
+function playBar() {
+    if (audio.classList.contains("playing") == true) {
+        n = setInterval(() => {
+            teste.value = valor; 
+            valor++
+            console.log(teste.value)
+        }, 2120)
+    } else {
+        clearInterval(n)
+    }
+}
+
+function setTime() {
+    audio.currentTime = teste.value * (audio.duration / 100);
+    valor = parseInt(teste.value);
+    console.log(teste.value)
+}
 
 // setInterval(() => {
 //     console.log(parseInt(audio.duration / 100))
-// }, 1500)
+// }, 1500) 
