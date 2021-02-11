@@ -31,3 +31,14 @@ function turnDown() {
         audio.volume -= 0.1;
     }
 }
+
+let teste = document.querySelector(".currentTimeBar");
+
+
+// setInterval(() => {
+//     teste.style = `width: ${parseInt(audio.duration) / 100}px`
+// }, 50)
+
+// setInterval(() => {
+//     console.log(parseInt(audio.duration / 100))
+// }, 1500)
