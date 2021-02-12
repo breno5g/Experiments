@@ -45,9 +45,13 @@ function next() {
 function resetInterface() {
     let fill = document.getElementById("timeFill");
     progressBar.value = 0;
-    fill.style = `width: ${0}%;`;
+    fill.style = `width: ${3}%;`;
+    currentTime = 0;
     audio.currentTime = 0;
-    audio.play();
+    if (audio.classList.contains("playing") == true) {
+        audio.play();
+        
+    }
 }
 
 /* =-=-=-=-= Mute buttom =-=-=-=-= */
@@ -89,9 +93,11 @@ function playBar() {
     if (audio.classList.contains("playing") == true) {
         playInterval = setInterval(() => {
             progressBar.value = currentTime; 
-            currentTime++
-            // console.log(progressBar.value)
-            fill.style = `width: ${progressBar.value - 1}%;`;
+            currentTime++;
+            fill.style = `width: ${progressBar.value - 0.3}%;`;
+            if (progressBar.value == 100) {
+                next();
+            }
         }, (audio.duration / 100) * 1000)
     } else {
         clearInterval(playInterval)
