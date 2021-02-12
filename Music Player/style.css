@@ -54,6 +54,7 @@ body {
     text-transform: uppercase;
 }
 
+/* =-=-=-=-= Music title =-=-=-=-= */
 .container .top .controls-container h1{
     font-size: 50px;
     font-weight: 700;
@@ -73,6 +74,7 @@ body {
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* =-=-=-=-= controls =-=-=-=-= */
 .container .top .controls {
     display: flex;
     justify-content: space-around;
@@ -92,6 +94,7 @@ body {
     background-color: #FF7446;
 }
 
+/* =-=-=-=-= Volume =-=-=-=-= */
 .container .top .volume {
     display: flex;
     margin: auto;
