@@ -24,7 +24,10 @@
                     <button id="vol" onclick="mute()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
                     </button>
-                    <input id="volumeBar" type="range" min="0" max="100" value="50" oninput="changeVol()">
+                    <div class="volSlider">
+                        <span id="volFill" class="volBar"></span>
+                        <input id="volumeBar" type="range" min="0" max="100" value="50" oninput="changeVol()">
+                    </div>
                     <span id="actualVol">50</span>
                 </div>
             </div>
@@ -32,7 +35,8 @@
         <div class="playing-now">
             <audio id="audio" src="assets/musics/Death of a bachelor.mp3"></audio>
             <div class="currentTime">
-                <input type="range" min="0" max="100" value="0" class="currentTimeBar" onchange="setTime()">
+                <span id="timeFill" class="timeFill"></span>
+                <input type="range" min="0" max="100" value="0" class="currentTimeBar" oninput="setTime()">
             </div>
         </div>
     </div>
