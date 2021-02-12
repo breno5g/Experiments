@@ -7,6 +7,7 @@ let playInterval;
 
 audio.volume = 0.5;
 
+/* =-=-=-=-= Play & Pause =-=-=-=-= */
 function playPause() {
     let btn = event.target;
     if (audio.classList.contains("playing") == true) {
@@ -22,13 +23,7 @@ function playPause() {
     }
 }
 
-function goBackward() {
-    audio.currentTime -= 15;
-}
-function goForward() {
-    audio.currentTime += 15;
-}
-
+/* =-=-=-=-= Volume =-=-=-=-= */
 function turnUp() {
     if (audio.volume >= 0 && audio.volume < 1) {
         audio.volume += 0.1;
