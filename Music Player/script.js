@@ -57,10 +57,11 @@ function mute() {
     // console.log(actualVol)
 }
 
-/* =-=-=-=-= Mute bar =-=-=-=-= */
+/* =-=-=-=-= Volume bar =-=-=-=-= */
 function changeVol() {
+    let vol = document.getElementById("actualVol")
     audio.volume = volumeBar.value * 0.01;
-    // console.log(audio.volume);
+    vol.innerText = volumeBar.value
 }
 
 /* =-=-=-=-= Time bar =-=-=-=-= */

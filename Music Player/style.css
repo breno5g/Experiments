@@ -99,6 +99,7 @@ body {
     justify-content: space-between;
 }
 
+/* =-=-=-=-= Mute button =-=-=-=-= */
 .container .top .volume button{
     width: 40px;
     height: 40px;
@@ -107,6 +108,8 @@ body {
     border-radius: 5px;
     outline: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .container .top .volume button svg {
@@ -114,6 +117,7 @@ body {
     height: 80%;
 }
 
+/* =-=-=-=-= Sliders =-=-=-=-= */
 .container .top .volume input[type = "range"] {
     width: 70%;
 }
@@ -122,6 +126,7 @@ input[type = "range"],
 input[type = "range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: transparent;
+    height: 20px;
 }
 
 input[type = "range"] {
@@ -129,6 +134,7 @@ input[type = "range"] {
     background-color: #ffffff2a;
     box-shadow: inset 3px 3px rgba(0, 0, 0, 0.2);
     outline: none;
+    transform: translateY(50%);
 }
 
 input[type = "range"]::-webkit-slider-thumb {
@@ -149,15 +155,21 @@ input[type = "range"]:active::-webkit-slider-thumb:hover {
                 0 0 0 6px white;
 }
 
+/* =-=-=-=-= Volume display =-=-=-=-= */
 .container .top .volume span {
     width: 40px;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #FF7446;
-    font-size: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 20px;
     font-weight: 600;
     border-radius: 5px;
 }
 
+/* =-=-=-=-= Timer slider =-=-=-=-= */
 .currentTimeBar {
     margin-top: 20px;
     width: 100%;
