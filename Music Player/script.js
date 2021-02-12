@@ -10,6 +10,9 @@ let playInterval;
 audio.volume = 0.5;
 fillVol.style = `width: ${volumeBar.value - 5}%;`
 
+/* =-=-=-=-= Songs =-=-=-=-= */
+let songs = ["Death of a bachelor", "Binks no sake", "The one dragonborn"]
+
 /* =-=-=-=-= Play & Pause =-=-=-=-= */
 function playPause() {
     let btn = event.target;
@@ -25,6 +28,9 @@ function playPause() {
         playBar()
     }
 }
+
+/* =-=-=-=-= Music change =-=-=-=-= */
+
 
 /* =-=-=-=-= Mute buttom =-=-=-=-= */
 function mute() {
