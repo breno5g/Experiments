@@ -41,6 +41,18 @@ function next() {
     resetInterface()
 }
 
+function previous() {
+    let lastSong = songs.length - 1;
+    if (actualSong > 0) {
+        audio.setAttribute("src", `assets/musics/${songs[actualSong - 1]}.mp3`)
+        actualSong--;
+    } else {
+        audio.setAttribute("src", `assets/musics/${songs[lastSong]}.mp3`)
+        actualSong = lastSong;
+    }
+    resetInterface()
+}
+
 /* =-=-=-=-= Reset interface =-=-=-=-= */
 function resetInterface() {
     let fill = document.getElementById("timeFill");
@@ -50,7 +62,6 @@ function resetInterface() {
     audio.currentTime = 0;
     if (audio.classList.contains("playing") == true) {
         audio.play();
-        
     }
 }
 
@@ -75,7 +86,6 @@ function mute() {
         vol.innerText = volumeBar.value;
         fillVol.style = `width: 0`
     }
-    // console.log(volumeBar.value)
 }
 
 /* =-=-=-=-= Volume bar =-=-=-=-= */
