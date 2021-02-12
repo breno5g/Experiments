@@ -12,6 +12,7 @@ fillVol.style = `width: ${volumeBar.value - 5}%;`
 
 /* =-=-=-=-= Songs =-=-=-=-= */
 let songs = ["Death of a bachelor", "Binks no sake", "The one dragonborn"]
+let actualSong = 0;
 
 /* =-=-=-=-= Play & Pause =-=-=-=-= */
 function playPause() {
@@ -30,7 +31,24 @@ function playPause() {
 }
 
 /* =-=-=-=-= Music change =-=-=-=-= */
+function next() {
+    if (actualSong != songs.length - 1) {
+        audio.setAttribute("src", `assets/musics/${songs[actualSong + 1]}.mp3`)
+        actualSong++;
+    } else {
+        audio.setAttribute("src", `assets/musics/${songs[0]}.mp3`)
+    }
+    resetInterface()
+}
 
+/* =-=-=-=-= Reset interface =-=-=-=-= */
+function resetInterface() {
+    let fill = document.getElementById("timeFill");
+    progressBar.value = 0;
+    fill.style = `width: ${0}%;`;
+    audio.currentTime = 0;
+    audio.play();
+}
 
 /* =-=-=-=-= Mute buttom =-=-=-=-= */
 function mute() {
