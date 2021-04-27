@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 900px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.loginContainer {
+    width: 350px;
+    height: 350px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #4e4e4e36;
+}
+
+.loginContainer img:first-child {
+    width: 200px;
+}
+
+.loginContainer img:nth-child(2) {
+    border-radius: 50%;
+    width: 110px;
+}
+
+.loginContainer button {
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: none;
+    background-color: #0195F6;
+    color: white;
+    font-weight: 900;
+}
+
+.loginContainer span button {
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: #0195F6;
+    font-size: 16px;
+}
+
+.phone {
+    position: relative;
+}
+
+.phone img:nth-child(2) {
+    position: absolute;
+    left: 151px;
+    top: 100px;
+}
+
+.animate {
+    animation: fade 2s ease-in-out;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
