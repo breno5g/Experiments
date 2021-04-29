@@ -1,4 +1,3 @@
-let image = document.querySelector(".phone").children[1];
 let index = 1;
 
 function load() {
@@ -7,15 +6,15 @@ function load() {
 
 function changeImage () {
     setInterval(() => {
+        document.querySelector(".phone").children[index].classList.remove("animate");    
         if (index < 5) {
             index++;
         } else {
-            index = 1;
+            index = 1
         }
-        setTimeout(() => {
-            image.classList.add("animate")
-            image.setAttribute("src", `assets/index${index}.jpg`)
-        }, 2000)
-        image.classList.remove("animate")
-    }, 4000)
+        document.querySelector('.phone').children[index].classList.add('animate')
+    }, 5000)
+    
 }
+
+window.document.addEventListener("load", load())
