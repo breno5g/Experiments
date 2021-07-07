@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+:root {
+    --fireBG: #fd735b;
+    --waterBG: #80bfff;
+    --grassBG: #9eec7f;
+    --electricBG: #fad76f;
+    --fairyBG: #f0a8f0;
+    --rockBG: #8b7cec;
+    --ghostBG: #9090df;
+    --dragonBG: #aaaabb;
+    --fightingBG: #cc6f60;
+    --bugBG: #c4d153;
+    --normalBG: #b6b6a8;
+    --poisonBG: #c76cb5;
+    --groundBG: #d3b763;
+    --psychicBG: #ff6ea8;
+    --iceBG: #6cc2fb;
+    --darkBG: #8b6e60;
+    --steelBG: #b6b6c5;
+    --flyingBG: #8899ff;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokedexContainer {
+    max-width: 1120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.pokedexContainer .pokeCard {
+    width: 175px;
+    height: 250px;
+    padding: 20px 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.pokedexContainer .pokeCard .pokeNumber {
+    padding: 3px 6px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    border-radius: 20px;
+    background: #ffffff80;
+    font-size: 12px;
+    color: black;
+}
+
+.pokedexContainer .pokeCard.grass {
+    background-color: var(--grassBG);
+}
+.pokedexContainer .pokeCard.fire {
+    background-color: var(--fireBG);
+}
+.pokedexContainer .pokeCard.water {
+    background-color: var(--waterBG);
+}
+.pokedexContainer .pokeCard.bug {
+    background-color: var(--bugBG);
+}
+.pokedexContainer .pokeCard.normal {
+    background-color: var(--normalBG);
+}
+.pokedexContainer .pokeCard.poison {
+    background-color: var(--poisonBG);
+}
+.pokedexContainer .pokeCard.electric {
+    background-color: var(--electricBG);
+}
+.pokedexContainer .pokeCard.ground {
+    background-color: var(--groundBG);
+}
+.pokedexContainer .pokeCard.fairy {
+    background-color: var(--fairyBG);
+}
+.pokedexContainer .pokeCard.fighting {
+    background-color: var(--fightingBG);
+}
+.pokedexContainer .pokeCard.psychic {
+    background-color: var(--psychicBG);
+}
+.pokedexContainer .pokeCard.rock {
+    background-color: var(--rockBG);
+}
+.pokedexContainer .pokeCard.ghost {
+    background-color: var(--ghostBG);
+}
+.pokedexContainer .pokeCard.ice {
+    background-color: var(--iceBG);
+}
+.pokedexContainer .pokeCard.dragon {
+    background-color: var(--dragonBG);
+}
+.pokedexContainer .pokeCard.dark {
+    background-color: var(--darkBG);
+}
+.pokedexContainer .pokeCard.steel {
+    background-color: var(--steelBG);
+}
+.pokedexContainer .pokeCard.flying {
+    background-color: var(--flyingBG);
+}
+
+.pokedexContainer .pokeCard figure {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: inherit;
+    box-shadow: inset 0 0 0 50px #ffffff80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokedexContainer .pokeCard figure::before {
+    content: "";
+    width: 100%;
+    height: 20px;
+    background-color: inherit;
+    position: absolute;
+    top: 55px;
+    left: 0;
+}
+
+.pokedexContainer .pokeCard figure::after {
+    content: "";
+    width: 50%;
+    height: 50%;
+    background-color: #ffffff80;
+    position: absolute;
+    margin: auto;
+    inset: 0;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.pokedexContainer .pokeCard.fire figure::after {
+    box-shadow: inset 0 0 0 15px var(--fireBG);
+}
+.pokedexContainer .pokeCard.grass figure::after {
+    box-shadow: inset 0 0 0 15px var(--grassBG);
+}
+.pokedexContainer .pokeCard.ice figure::after {
+    box-shadow: inset 0 0 0 15px var(--iceBG);
+}
+.pokedexContainer .pokeCard.normal figure::after {
+    box-shadow: inset 0 0 0 15px var(--normalBG);
+}
+.pokedexContainer .pokeCard.ice figure::after {
+    box-shadow: inset 0 0 0 15px var(--iceBG);
+}
+.pokedexContainer .pokeCard.ghost figure::after {
+    box-shadow: inset 0 0 0 15px var(--ghostBG);
+}
+.pokedexContainer .pokeCard.water figure::after {
+    box-shadow: inset 0 0 0 15px var(--waterBG);
+}
+.pokedexContainer .pokeCard.psychic figure::after {
+    box-shadow: inset 0 0 0 15px var(--psychicBG);
+}
+.pokedexContainer .pokeCard.rock figure::after {
+    box-shadow: inset 0 0 0 15px var(--rockBG);
+}
+.pokedexContainer .pokeCard.poison figure::after {
+    box-shadow: inset 0 0 0 15px var(--poisonBG);
+}
+.pokedexContainer .pokeCard.bug figure::after {
+    box-shadow: inset 0 0 0 15px var(--bugBG);
+}
+.pokedexContainer .pokeCard.electric figure::after {
+    box-shadow: inset 0 0 0 15px var(--electricBG);
+}
+.pokedexContainer .pokeCard.fighting figure::after {
+    box-shadow: inset 0 0 0 15px var(--fightingBG);
+}
+.pokedexContainer .pokeCard.fairy figure::after {
+    box-shadow: inset 0 0 0 15px var(--fairyBG);
+}
+.pokedexContainer .pokeCard.ground figure::after {
+    box-shadow: inset 0 0 0 15px var(--groundBG);
+}
+.pokedexContainer .pokeCard.dragon figure::after {
+    box-shadow: inset 0 0 0 15px var(--dragonBG);
+}
+.pokedexContainer .pokeCard.dark figure::after {
+    box-shadow: inset 0 0 0 15px var(--darkBG);
+}
+.pokedexContainer .pokeCard.steel figure::after {
+    box-shadow: inset 0 0 0 15px var(--steelBG);
+}
+.pokedexContainer .pokeCard.flying figure::after {
+    box-shadow: inset 0 0 0 15px var(--flyingBG);
+}
+
+.pokedexContainer .pokeCard figure img {
+    width: 140%;
+    max-width: 170px;
+    position: absolute;
+    filter: opacity(100%);
+    z-index: 10;
+}
+
+.pokedexContainer .pokeCard h1 {
+    color: white;
+    font-size: 18px;
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1),
+        1px 1px 1px rgba(0, 0, 0, 0.315);
+}
+
+.pokedexContainer .pokeCard .typeContainer {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.pokedexContainer .pokeCard .typeContainer span {
+    width: fit-content;
+    background-color: #ffffff80;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
