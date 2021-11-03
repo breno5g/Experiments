@@ -4,18 +4,20 @@ let pos = 0;
 // Volta uma imagem
 function previous() {
   pos -= 600;
-  if (pos < 0) {
-    pos = 3000;
-  }
+  // Caso esteja na primeira imagem, ele avança para a ultima
+  // if (pos < 0) {
+  //   pos = 3000;
+  // }
   container.scroll(pos, 0);
 }
 
 // Avança uma imagem
 function next() {
   pos += 600;
-  if (pos >= 3000) {
-    pos = 0;
-  }
+  // Caso esteja na ultima imagem, ele volta para a primeira
+  // if (pos >= 3000) {
+  //   pos = 0;
+  // }
   container.scroll(pos, 0);
 }
 
