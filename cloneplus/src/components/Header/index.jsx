@@ -10,12 +10,24 @@ export class Header extends React.Component {
           <img src={logoImg} alt="logo" />
           <nav>
             <ol>
-              <li>INÍCIO</li>
-              <li>PESQUISA</li>
-              <li>MINHA LISTA</li>
-              <li>ORIGINAIS</li>
-              <li>FILMES</li>
-              <li>SÉRIES</li>
+              <li>
+                <a href="/">INÍCIO</a>
+              </li>
+              <li>
+                <a href="/">PESQUISA</a>
+              </li>
+              <li>
+                <a href="/">MINHA LISTA</a>
+              </li>
+              <li>
+                <a href="/">ORIGINAIS</a>
+              </li>
+              <li>
+                <a href="/">FILMES</a>
+              </li>
+              <li>
+                <a href="/">SÉRIES</a>
+              </li>
             </ol>
           </nav>
         </div>

@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
-import { Carousel } from '@trendyol-js/react-carousel';
 import moanaLogo from '../../assets/logo-moana.png';
 
-import './style.css';
-
-const item = ['moana', 'moana', 'moana', 'moana'];
+import { Carousel, Holder } from './style';
 
 export class Banner extends Component {
   render() {
     return (
-      <>
-        <Carousel show={1} className="carousel">
-          {item.map((movie) => (
-            <div className="item">
-              <img className="logo" src={moanaLogo} alt="moana" />
-              <img src="https://wallpaperaccess.com/full/3721099.png" alt="" />
-            </div>
-          ))}
-        </Carousel>
-      </>
+      <Carousel>
+        <Holder className="carousel">
+          <div className="item current">
+            <img src={moanaLogo} alt="logo" className="logo" />
+            <img
+              src="https://i.pinimg.com/originals/ce/0f/aa/ce0faa55ff3de4cd828643840b49e6c5.jpg"
+              alt="banner"
+              className="banner "
+            />
+          </div>
+          <div className="item next">
+            <img src={moanaLogo} alt="logo" className="logo" />
+            <img
+              src="https://i.pinimg.com/originals/ce/0f/aa/ce0faa55ff3de4cd828643840b49e6c5.jpg"
+              alt="banner"
+              className="banner "
+            />
+          </div>
+
+          <div className="item previous">
+            <img src={moanaLogo} alt="logo" className="logo" />
+            <img
+              src="https://i.pinimg.com/originals/ce/0f/aa/ce0faa55ff3de4cd828643840b49e6c5.jpg"
+              alt="banner"
+              className="banner "
+            />
+          </div>
+        </Holder>
+        <button>
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button>
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </Carousel>
     );
   }
 }

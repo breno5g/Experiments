@@ -35,6 +35,11 @@ export const StyledHeader = styled.header`
     padding: 15px 0;
   }
 
+  ol li a {
+    text-decoration: none;
+    color: white;
+  }
+
   ol li::before {
     margin-right: 10px;
   }
@@ -66,7 +71,7 @@ export const StyledHeader = styled.header`
     content: '';
   }
 
-  ol li::after {
+  ol li a::after {
     content: '';
     position: absolute;
     background-color: white;
@@ -77,7 +82,7 @@ export const StyledHeader = styled.header`
     transition: width 0.2s;
   }
 
-  ol li:hover::after {
+  ol li a:hover::after {
     width: calc(100% - 25px);
   }
 
