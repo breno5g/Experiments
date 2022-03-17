@@ -1,0 +1,35 @@
+h2 {
+  margin: 20px 0;
+}
+
+h2:last-of-type {
+  margin: 10px 0;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.smallCard {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px #11111160;
+}
+
+.smallCard img {
+  width: 60%;
+  height: 60%;
+  align-self: center;
+  margin-bottom: 20px;
+}
