@@ -1,0 +1,14 @@
+{
+  "name": "teste002",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "cheerio": "^1.0.0-rc.10",
+    "puppeteer": "^13.5.2"
+  }
+}
