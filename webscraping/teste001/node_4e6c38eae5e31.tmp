@@ -5,8 +5,8 @@ const fs = require('fs');
 const URL = 'https://mangahosted.com/manga/one-piece-br-mh80123';
 const folderNameArray = [];
 
-const initCap = 512;
-const endCap = 514;
+const initCap = 1;
+const endCap = 2;
 
 const getChapters = async () => {
   try {
@@ -15,10 +15,11 @@ const getChapters = async () => {
     const $ = cheerio.load(html);
     const chapters = [];
     $('a.btn-green').each((index, n2) => {
-      const link = $(n2).attr('href');
-      const capName = link.split('/')[5];
+      const link = $(n2);
+      const capName = link.attr('href').split('/')[capName.length - 1];
       if (Number(capName) >= initCap && Number(capName) <= endCap) {
-        chapters.push(link);
+        chapters.push(link.attr('href'));
+        console.log(capName);
         folderNameArray.push(capName);
       }
     });
@@ -41,9 +42,7 @@ const getImagesLink = async () => {
       const img = $(this).find('img');
       imgsArray.push(img.attr('src'));
     });
-    setTimeout(() => {
-      saveImages(imgsArray, index);
-    }, 3000);
+    saveImages(imgsArray, index);
   });
 };
 
@@ -54,7 +53,7 @@ const saveImages = (arr, fIndex) => {
     axios.get(img, { responseType: 'stream' }).then(({ data }) => {
       data.pipe(
         fs.createWriteStream(
-          `./${folderName}/${(index + 1).toString().padStart(2, '0')}.jpg`
+          `./${folderName}}/${(index + 1).toString().padStart(2, '0')}.jpg`
         )
       );
     });
