@@ -1,12 +1,17 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
+const { question, questionInt } = require('readline-sync');
 
-const URL = 'https://mangahosted.com/manga/one-piece-br-mh80123';
+console.log('Only manga host \n');
+const URL = question(
+  'Insira a URL da pagina principal do mangá que deseja realizar o download: '
+);
+
+const initCap = questionInt('Insira o capitulo inicial que deseja baixar: ');
+const endCap = questionInt('Insira o capitulo final que deseja baixar: ');
+
 const folderNameArray = [];
-
-const initCap = 512;
-const endCap = 514;
 
 const getChapters = async () => {
   try {
@@ -29,36 +34,43 @@ const getChapters = async () => {
 };
 
 const getImagesLink = async () => {
-  const chaptersPage = await getChapters();
-  console.log(folderNameArray);
+  try {
+    const chaptersPage = await getChapters();
 
-  chaptersPage.forEach(async (cap, index) => {
-    const { data: html } = await axios.get(cap);
-    const $ = cheerio.load(html);
-    const allPictures = $('picture');
-    const imgsArray = [];
-    allPictures.each(function () {
-      const img = $(this).find('img');
-      imgsArray.push(img.attr('src'));
+    chaptersPage.forEach(async (cap, index) => {
+      const { data: html } = await axios.get(cap);
+      const $ = cheerio.load(html);
+      const allPictures = $('picture');
+      const imgsArray = [];
+      allPictures.each(function () {
+        const img = $(this).find('img');
+        imgsArray.push(img.attr('src'));
+      });
+      setTimeout(() => {
+        saveImages(imgsArray, index);
+      }, 3000);
     });
-    setTimeout(() => {
-      saveImages(imgsArray, index);
-    }, 3000);
-  });
+  } catch (err) {
+    console.log(err.message);
+  }
 };
 
 const saveImages = (arr, fIndex) => {
-  const folderName = `Capitulo ${folderNameArray[fIndex]}`;
-  fs.mkdirSync(folderName);
-  arr.forEach((img, index) => {
-    axios.get(img, { responseType: 'stream' }).then(({ data }) => {
-      data.pipe(
-        fs.createWriteStream(
-          `./${folderName}/${(index + 1).toString().padStart(2, '0')}.jpg`
-        )
-      );
+  try {
+    const folderName = `Capitulo ${folderNameArray[fIndex]}`;
+    fs.mkdirSync(folderName);
+    arr.forEach((img, index) => {
+      axios.get(img, { responseType: 'stream' }).then(({ data }) => {
+        data.pipe(
+          fs.createWriteStream(
+            `./${folderName}/${(index + 1).toString().padStart(2, '0')}.jpg`
+          )
+        );
+      });
     });
-  });
+  } catch (err) {
+    console.log(err.message);
+  }
 };
 
 const init = () => {
