@@ -36,7 +36,8 @@ const getChapters = async () => {
 const getImagesLink = async () => {
   try {
     const chaptersPage = await getChapters();
-
+    // De acordo com o Pedro, async não pode ser usado em callbacks de HOFs
+    // Ainda preciso estudar mais sobre isso
     for (const [index, cap] of chaptersPage.entries()) {
       const { data: html } = await axios.get(cap);
       const $ = cheerio.load(html);
