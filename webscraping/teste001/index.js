@@ -1,17 +1,26 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const fs = require('fs');
-const { question, questionInt } = require('readline-sync');
+const axios = require("axios");
+const cheerio = require("cheerio");
+const fs = require("fs");
+const { resolve } = require("path");
+const { question, questionInt } = require("readline-sync");
 
-console.log('Only manga host \n');
+console.log("Only manga host \n");
 const URL = question(
-  'Insira a URL da pagina principal do mangá que deseja realizar o download: '
+  "Insira a URL da pagina principal do mangá que deseja realizar o download: ",
 );
 
-const initCap = questionInt('Insira o capitulo inicial que deseja baixar: ');
-const endCap = questionInt('Insira o capitulo final que deseja baixar: ');
+const initCap = questionInt("Insira o capitulo inicial que deseja baixar: ");
+const endCap = questionInt("Insira o capitulo final que deseja baixar: ");
 
 const folderNameArray = [];
+
+const sleep = async (seconds = 1) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, seconds * 1000);
+  });
+};
 
 const getChapters = async () => {
   try {
@@ -19,9 +28,9 @@ const getChapters = async () => {
     const { data: html } = res;
     const $ = cheerio.load(html);
     const chapters = [];
-    $('a.btn-green').each((index, n2) => {
-      const link = $(n2).attr('href');
-      const capName = link.split('/')[5];
+    $("a.btn-green").each((index, n2) => {
+      const link = $(n2).attr("href");
+      const capName = link.split("/")[5];
       if (Number(capName) >= initCap && Number(capName) <= endCap) {
         chapters.push(link);
         folderNameArray.push(capName);
@@ -41,46 +50,38 @@ const getImagesLink = async () => {
     for (const [index, cap] of chaptersPage.entries()) {
       const { data: html } = await axios.get(cap);
       const $ = cheerio.load(html);
-      const allPictures = $('picture');
+      const allPictures = $("picture");
       const imgsArray = [];
       allPictures.each(function () {
-        const img = $(this).find('img');
-        imgsArray.push(img.attr('src'));
+        const img = $(this).find("img");
+        imgsArray.push(img.attr("src"));
       });
-      saveImages(imgsArray, index);
+      await saveImages(imgsArray, index);
+      await sleep(1);
     }
-
-    // chaptersPage.forEach(async (cap, index) => {
-    //   const { data: html } = await axios.get(cap);
-    //   const $ = cheerio.load(html);
-    //   const allPictures = $("picture");
-    //   const imgsArray = [];
-    //   allPictures.each(function () {
-    //     const img = $(this).find("img");
-    //     imgsArray.push(img.attr("src"));
-    //   });
-    //   setTimeout(() => {
-    //     saveImages(imgsArray, index);
-    //   }, 3000);
-    // });
   } catch (err) {
     console.log(err.message);
   }
 };
 
-const saveImages = (arr, fIndex) => {
+const saveImages = async (arr, fIndex) => {
   try {
     const folderName = `Capitulo ${folderNameArray[fIndex]}`;
     fs.mkdirSync(folderName);
-    arr.forEach((img, index) => {
-      axios.get(img, { responseType: 'stream' }).then(({ data }) => {
+    for (const [index, img] of arr.entries()) {
+      try {
+        const { data } = await axios.get(img, { responseType: "stream" });
         data.pipe(
           fs.createWriteStream(
-            `./${folderName}/${(index + 1).toString().padStart(2, '0')}.jpg`
-          )
+            `./${folderName}/${(index + 1).toString().padStart(2, "0")}.jpg`,
+          ),
         );
-      });
-    });
+        // await sleep(1);
+      } catch (error) {
+        console.error(error);
+        break;
+      }
+    }
   } catch (err) {
     console.log(err.message);
   }
