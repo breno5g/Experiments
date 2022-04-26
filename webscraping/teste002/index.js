@@ -40,6 +40,9 @@ const URL =
   await page.goto('http://discord.com/login');
   await discordLogin(page);
   await page.goto(
+    // 'https://discord.com/channels/943937409488392262/958458783380676679'
+    // 'https://discord.com/channels/@me/847990754638037003'
+    // 'https://discord.com/channels/@me/943852257454207027'
     'https://discord.com/channels/943937409488392262/943937409488392265'
   );
   await sendImage(page, selectedImage);

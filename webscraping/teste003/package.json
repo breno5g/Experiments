@@ -1,0 +1,13 @@
+{
+  "name": "teste003",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.1",
+    "cheerio": "^1.0.0-rc.10",
+    "epub-gen": "^0.1.0",
+    "puppeteer": "^13.6.0",
+    "readline-sync": "^1.4.10"
+  }
+}
