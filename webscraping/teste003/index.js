@@ -3,18 +3,17 @@ const cheerio = require('cheerio');
 const epub = require('epub-gen');
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
+const { questionInt } = require('readline-sync');
 
 const URL = 'https://saikaiscan.com.br/series/king-of-gods-kog?tab=capitulos';
+const volumeNumber = questionInt('Digite o numero do volume que deseja: ');
 
 const goingMerry = async () => {
-  console.log('chorei no merry');
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(URL);
-  await page.evaluate(() => {
-    const volumeButton = Array.from(document.querySelectorAll('.active'))[32];
-    volumeButton.click();
-  });
+  const volumeButton = await page.$$('.active')
+  await volumeButton[volumeNumber].click();
   const content = await page.content();
   await fs.writeFile('./volume.html', content, 'utf-8');
   await browser.close();
@@ -22,7 +21,6 @@ const goingMerry = async () => {
 
 const getLinksForCaps = async () => {
   await goingMerry();
-  console.log('rodei nos links');
   const html = await fs.readFile('./volume.html', 'utf-8');
   const $ = cheerio.load(html);
   const linkForCaps = [];
@@ -35,13 +33,12 @@ const getLinksForCaps = async () => {
 };
 
 const download = async (capTitle, capUrl) => {
-  console.log('rodei no download');
   const novelPage = await axios.get(capUrl);
   const { data: html } = novelPage;
   const $ = cheerio.load(html);
   const options = {
     title: 'King of Gods',
-    author: 'Breno - O foda',
+    author: 'Fast Food Restaurant',
     output: `./Capitulos/${capTitle}.epub`,
     content: [
       {
@@ -54,7 +51,6 @@ const download = async (capTitle, capUrl) => {
 };
 
 const franky = async () => {
-  console.log('rodei');
   await getLinksForCaps();
   const json = await fs.readFile('./links.json', 'utf-8');
   const links = JSON.parse(json);
