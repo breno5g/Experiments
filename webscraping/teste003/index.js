@@ -55,6 +55,10 @@ const download = async (capTitle, capUrl) => {
   new epub(options).promise.then(() => console.log('Done'));
 };
 
+const removeArchive = async (filePath) => {
+  await fs.rm(filePath);
+}
+
 const franky = async () => {
   await getLinksForCaps();
   const json = await fs.readFile('./links.json', 'utf-8');
@@ -62,6 +66,8 @@ const franky = async () => {
   for (let { capName, capUrl } of links) {
     await download(capName, capUrl);
   }
+  await removeArchive('./volume.html');
+  await removeArchive('./links.json');
 };
 
 franky();
