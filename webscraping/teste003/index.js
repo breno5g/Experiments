@@ -8,6 +8,7 @@ const path = require('path');
 
 const URL = 'https://saikaiscan.com.br/series/king-of-gods-kog?tab=capitulos';
 const volumeNumber = questionInt('Digite o numero do volume que deseja: ');
+const directoryName = `Volume ${volumeNumber}`;
 
 const goingMerry = async () => {
   const browser = await puppeteer.launch();
@@ -25,6 +26,10 @@ const getLinksForCaps = async () => {
   const html = await fs.readFile('./volume.html', 'utf-8');
   const $ = cheerio.load(html);
   const linkForCaps = [];
+  const files = await fs.readdir('./Capitulos');
+  if (!files.includes(directoryName)) {
+    await fs.mkdir(`./Capitulos/${directoryName}`);
+  }
   $('a[data-v-6b52f310=""]').each((index, cap) => {
     const capUrl = `https://saikaiscan.com.br${$(cap).attr('href')}`;
     const capName = capUrl.split('/').slice(-1)[0];
@@ -53,6 +58,10 @@ const download = async (capTitle, capUrl) => {
   );
 };
 
+const removeArchive = async (filePath) => {
+  await fs.rm(filePath);
+};
+
 const franky = async () => {
   await getLinksForCaps();
   const json = await fs.readFile('./links.json', 'utf-8');
@@ -60,6 +69,8 @@ const franky = async () => {
   for (let { capName, capUrl } of links) {
     await download(capName, capUrl);
   }
+  await removeArchive('./volume.html');
+  await removeArchive('./links.json');
 };
 
 franky();
