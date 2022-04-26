@@ -62,10 +62,6 @@ const removeArchive = async (filePath) => {
   await fs.rm(filePath);
 };
 
-const removeArchive = async (filePath) => {
-  await fs.rm(filePath);
-}
-
 const franky = async () => {
   await getLinksForCaps();
   const json = await fs.readFile('./links.json', 'utf-8');
