@@ -4,6 +4,7 @@ const epub = require('epub-gen');
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 const { questionInt } = require('readline-sync');
+const path = require('path');
 
 const URL = 'https://saikaiscan.com.br/series/king-of-gods-kog?tab=capitulos';
 const volumeNumber = questionInt('Digite o numero do volume que deseja: ');
@@ -13,7 +14,7 @@ const goingMerry = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(URL);
-  const volumeButton = await page.$$('.active')
+  const volumeButton = await page.$$('.active');
   await volumeButton[volumeNumber].click();
   const content = await page.content();
   await fs.writeFile('./volume.html', content, 'utf-8');
@@ -44,7 +45,7 @@ const download = async (capTitle, capUrl) => {
   const options = {
     title: `King_of_Gods_Cap_${capTitle}`,
     author: 'Fast Food Restaurant',
-    output: `./Capitulos/${directoryName}/${capTitle}.epub`,
+    cover: path.join(__dirname, 'cover.jpg'),
     content: [
       {
         title: capTitle,
@@ -52,7 +53,13 @@ const download = async (capTitle, capUrl) => {
       },
     ],
   };
-  new epub(options).promise.then(() => console.log('Done'));
+  new epub(options, `./Capitulos/${capTitle}.epub`).promise.then(() =>
+    console.log('Done')
+  );
+};
+
+const removeArchive = async (filePath) => {
+  await fs.rm(filePath);
 };
 
 const removeArchive = async (filePath) => {
