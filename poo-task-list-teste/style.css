@@ -1,0 +1,108 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  width: 450px;
+  height: 600px;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px 5px #33333340;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form {
+  padding: 1rem 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.form input {
+  padding: 0.7rem;
+  width: 100%;
+  border: none;
+  box-shadow: 0 10px 10px #33333340;
+  outline: none;
+  border-radius: 0.25rem;
+}
+
+.form button {
+  width: 30%;
+  border: none;
+  background-color: rgb(202, 255, 200);
+  box-shadow: 0 10px 10px #33333340;
+  color: white;
+  font-size: 1rem;
+  font-weight: 800;
+  text-shadow: 1px 1px #33333370;
+  transition: 0.25s;
+  border-radius: 0.25rem;
+}
+
+.form .task-editBtnForm {
+  background-color: rgb(150, 239, 255);
+}
+
+.hidden {
+  display: none;
+}
+
+.task-container {
+  padding: 1rem 0.6rem;
+}
+
+.task-container li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  box-shadow: 2px 5px 10px #33333340;
+  padding: 10px;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.task-container li button.task-deleteBtn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: rgb(255, 150, 150);
+  color: white;
+  font-weight: 800;
+  text-shadow: 1px 1px #33333370;
+  border-radius: 0.25rem;
+  transition: 0.25s;
+}
+
+.task-container li button.task-editBtn {
+  width: 40px;
+  height: 20px;
+  border: none;
+  background-color: rgb(150, 239, 255);
+  color: white;
+  font-weight: 800;
+  text-shadow: 1px 1px #33333370;
+  border-radius: 0.25rem;
+  transition: 0.25s;
+  margin-right: 0.5rem;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(110%);
+  transform: scale(1.05);
+}
